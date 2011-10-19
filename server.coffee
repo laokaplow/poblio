@@ -4,7 +4,10 @@ exports.addRoute = (route, action) ->
     exports.routes.push {route, action}
     
 matchRoute = (route, path) ->
-    route == path
+    if route instanceof RegExp
+        return route.test path
+    else 
+        return route == path        
     
 router = (req, res) ->
     console.log "processing request for #{req.url}"

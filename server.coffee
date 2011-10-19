@@ -1,10 +1,10 @@
 exports.routes = []
 
 exports.addRoute = (path, handle) ->
-    routes.push {path, handle}
+    exports.routes.push {path, handle}
 
 router = (req, res) ->
-    for handler in routes
+    for handler in exports.routes
         if handler.path == req.url
             handler.handle res
             return

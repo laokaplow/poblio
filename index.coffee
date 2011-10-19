@@ -1,9 +1,11 @@
 http = require "http"
 
+writePage = (out, statusCode, body) ->
+    out.writeHead statusCode, "content-type": "text/html"
+    out.end body
+
 server = http.createServer (req, res) ->
-    res.writeHead 200, "Content-Type": "text/html"
-    res.write "Hello Poblio"
-    res.end()
+    writePage res, out, 200, "hello Poblio"
     console.log "Request Handled for #{req.url} @ #{new Date()}"
 
 server.listen 8080

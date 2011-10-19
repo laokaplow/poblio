@@ -4,6 +4,7 @@ exports.addRoute = (path, handle) ->
     exports.routes.push {path, handle}
 
 router = (req, res) ->
+    console.log "processing request for #{req.url}"
     for handler in exports.routes
         if handler.path == req.url
             handler.handle res

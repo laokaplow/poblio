@@ -10,7 +10,7 @@ router = (req, res) ->
             handler.action res
             return
     #else
-    res.writeHeader 400
+    res.writeHeader 404
     res.end "ERROR 404: Not Found."
         
 exports.start = ->

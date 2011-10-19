@@ -3,10 +3,13 @@ exports.routes = []
 exports.addRoute = (route, action) ->
     exports.routes.push {route, action}
     
+matchRoute = (route, path) ->
+    route == path
+    
 router = (req, res) ->
     console.log "processing request for #{req.url}"
     for handler in exports.routes
-        if handler.route == req.url
+        if matchRoute handler.route, req.url
             handler.action res
             return
     #else

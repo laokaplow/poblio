@@ -5,7 +5,8 @@ writePage = (out, statusCode, body) ->
     out.end body
 
 server = http.createServer (req, res) ->
-    writePage res, out, 200, "hello Poblio"
+    
+    writePage res, 200, "hello Poblio"
     console.log "Request Handled for #{req.url} @ #{new Date()}"
 
 server.listen 8080

@@ -1,10 +1,8 @@
-http = require "http"
-
 writePage = (out, statusCode, body) ->
     out.writeHead statusCode, "content-type": "text/html"
     out.end body
 
-server = http.createServer (req, res) ->
+router = (req, res) ->
     switch req.url
         when '/'
             writePage res, 200, "hello Poblio"
@@ -13,5 +11,6 @@ server = http.createServer (req, res) ->
             
     console.log "Request Handled for #{req.url} @ #{new Date()}"
 
-server.listen 8080
+
+server = require("http").createServer(router).listen 8080
 console.log "Server Started on port 8080"

@@ -10,7 +10,7 @@ router = (req, res) ->
     console.log "processing request for #{req.url}"
     for handler in exports.routes
         if matchRoute handler.route, req.url
-            handler.action res
+            handler.action req, res
             return
     #else
     res.writeHeader 404

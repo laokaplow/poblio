@@ -1,6 +1,6 @@
 exports.routes = []
 
-addRoute = (path, handle) ->
+exports.addRoute = (path, handle) ->
     routes.push {path, handle}
 
 router = (req, res) ->

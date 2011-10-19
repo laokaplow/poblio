@@ -1,16 +1,16 @@
 exports.routes = []
 
-exports.addRoute = (path, handle) ->
-    exports.routes.push {path, handle}
-
+exports.addRoute = (route, action) ->
+    exports.routes.push {route, action}
+    
 router = (req, res) ->
     console.log "processing request for #{req.url}"
     for handler in exports.routes
-        if handler.path == req.url
-            handler.handle res
+        if handler.route == req.url
+            handler.action res
             return
     #else
-    res.writeHeader 400, "Not Found", {"text/plain"}
+    res.writeHeader 400
     res.end "ERROR 404: Not Found."
         
 exports.start = ->
